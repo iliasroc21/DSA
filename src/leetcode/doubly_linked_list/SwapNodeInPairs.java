@@ -1,6 +1,10 @@
 package leetcode.doubly_linked_list;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class SwapNodeInPairs {
+
     class ListNode {
         ListNode prev;
         ListNode next;
