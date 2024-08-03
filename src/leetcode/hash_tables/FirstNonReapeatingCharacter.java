@@ -16,6 +16,5 @@ public class FirstNonReapeatingCharacter {
             }
         }
         return null;
-
     }
 }
