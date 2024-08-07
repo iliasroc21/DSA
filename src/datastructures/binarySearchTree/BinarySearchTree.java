@@ -1,5 +1,9 @@
 package datastructures.binarySearchTree;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinarySearchTree {
     class Node {
         int value ;
@@ -108,6 +112,57 @@ public class BinarySearchTree {
     public int minValue(Node currentNode){
         if (currentNode.left ==null)return currentNode.value;
         return minValue(currentNode.left);
+    }
+    public ArrayList<Integer> BFS(){
+        Node currentNode = root;
+        Queue<Node> queue = new LinkedList<>();
+        ArrayList<Integer> results = new ArrayList<>();
+        queue.add(currentNode);
+        while(!queue.isEmpty()){
+            currentNode =  queue.remove();
+            results.add(currentNode.value);
+            if(currentNode.left !=null) queue.add(currentNode.left);
+            if(currentNode.right !=null)queue.add(currentNode.right);
+        }
+        return results ;
+    }
+    public ArrayList<Integer> DFSPreOrder(){
+        ArrayList<Integer> results = new ArrayList<>();
+        class Traverse{
+            Traverse(Node currentNode){
+                results.add(currentNode.value);
+                if(currentNode.left !=null) new Traverse(currentNode.left);
+                if(currentNode.right !=null) new Traverse(currentNode.right);
+            }
+        }
+        new Traverse(root);
+        return  results ;
+    }
+    public ArrayList<Integer> DFSPostOrder(){
+        ArrayList<Integer> results = new ArrayList<>();
+        class Traverse{
+            Traverse(Node currentNode){
+                if(currentNode.left !=null) new Traverse(currentNode.left);
+                if(currentNode.right !=null) new Traverse(currentNode.right);
+                results.add(currentNode.value);
+            }
+        }
+        new Traverse(root);
+        return results;
+
+    }
+    public ArrayList<Integer> DFSInOrder(){
+        ArrayList<Integer> results = new ArrayList<>();
+        class Traverse{
+            Traverse(Node currentNode){
+                if(currentNode.left !=null) new Traverse(currentNode.left);
+                results.add(currentNode.value);
+                if(currentNode.right !=null) new Traverse(currentNode.right);
+            }
+        }
+        new Traverse(root);
+        return results;
+
     }
 
 
