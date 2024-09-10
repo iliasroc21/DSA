@@ -8,7 +8,6 @@ public class IsomorphicStrings {
         if(t.length()!=s.length())return false;
         Map<Character , Character> mapS2T = new HashMap<>();
         Map<Character , Character> mapT2S = new HashMap<>();
-
         for(int i = 0 ; i < s.length(); i++){
             char charS= s.charAt(i);
             char charT = t.charAt(i);
